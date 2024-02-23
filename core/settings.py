@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
+from dotenv import load_dotenv
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'apps.todo',
     'apps.pixy',
     'apps.delta',
+    'apps.users',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +129,18 @@ STATICFILES_DIRS = [ BASE_DIR / "static",]
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = 'login'
+
+# SMTP 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 25
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'oxebrain@gmail.com'
+EMAIL_HOST_PASSWORD = 'npmo jykj fctz brwz' #'CogniDream@3.1Google'
+
+# Use this only for developemnt purpose without SMTP
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
