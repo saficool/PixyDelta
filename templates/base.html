@@ -7,28 +7,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <title>Pixy Delta</title>
 </head>
 
-<body>
-    <header class="header">
+<body class="bg-dark" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-sm bg-dark border-bottom border-body pd-shadow fixed-top align-items-center">
         <div class="container">
-            <a href="{%url 'home'%}" class="logo">PixyDelta</a>
-            <nav class="nav">
-                <a href="{%url 'home'%}"><i class="bi bi-house-fill"></i> Home</a>
-                {% if request.user.is_authenticated %}
-                <a href="{% url 'tasks' %}"><i class="bi bi-list-task"></i> My Tasks</a>
-                <a href="{% url 'pixy' %}"><i class="bi bi-plus-circle"></i> Pixy</a>
-                <a href="{% url 'profile' %}" title="Update my profile">Hi {{request.user | title}}</a>
-                <a href="{% url 'logout' %}" class="btn btn-outline">Logout</a>
-                {% else %}
-                <a href="{% url 'login' %}" class="btn btn-outline">Login</a>
-                <a href="{% url 'register' %}" class="btn btn-primary">Join Now</a>
-                {% endif %}
-            </nav>
+            <a class="navbar-brand" href="{%url 'home'%}">PixyDelta</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav w-100">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'home'%}"><i class="bi bi-house-fill me-1"></i>Home</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tasks' %}"><i class="bi bi-list-task me-1"></i>Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pixy' %}"><i class="bi bi-card-text me-1"></i>Pixy</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pixy' %}"><i class="bi bi-bell"></i></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{request.user | title}}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Join Now</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-    </header>
-    <main>
+    </nav>
+    <main style="padding-top: 62px;padding-bottom: 5px;">
         <div class="container">
             {% if messages %}
             {% for message in messages %}
@@ -42,11 +81,6 @@
             {%endblock content%}
         </div>
     </main>
-    <!-- <footer class="footer">
-        <div class="container">
-            <p>© Copyright {% now "Y" %} by <a href="https://www.pythontutorial.net">Python Tutorial</a></p>
-        </div>
-    </footer> -->
 </body>
 </body>
 
