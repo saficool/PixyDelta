@@ -4,6 +4,7 @@
 
 <div class="center">
     <h2>My Todo List</h2>
+    <a href="{%url 'task-create'%}"><i class="bi bi-plus-circle"></i> Create Task</a>
     {% if tasks %}
     <ul class="tasks">
         {% for task in tasks %}

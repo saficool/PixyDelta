@@ -6,12 +6,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("favicon.ico",RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),
-    ),
+    path("favicon.ico",RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),),
     path('admin/', admin.site.urls),
-    # path('',include('apps.home.urls')),
+    path('',include('apps.home.urls')),
     path('',include('apps.todo.urls')),
-    path('',include('apps.users.urls'))
+    path('',include('apps.users.urls')),
+    path('',include('apps.pixy.urls'))
 ]
 
 if settings.DEBUG:

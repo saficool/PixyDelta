@@ -5,10 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-
 from .models import Task
-
-
 
 class TaskList(LoginRequiredMixin, ListView):
     model = Task
@@ -62,8 +59,3 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
     def get_queryset(self):
         base_qs = super(TaskDelete, self).get_queryset()
         return base_qs.filter(user=self.request.user)
-    
-def home(request):
-    return render(request,'home.html')
-
-    
