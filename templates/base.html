@@ -1,6 +1,6 @@
 {%load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -15,8 +15,8 @@
     <title>Pixy Delta</title>
 </head>
 
-<body class="bg-dark" data-bs-theme="dark">
-    <nav class="navbar navbar-expand-sm bg-dark border-bottom border-body pd-shadow fixed-top align-items-center">
+<body>
+    <nav class="navbar navbar-expand-sm bg-light border-bottom border-body pd-shadow fixed-top align-items-center">
         <div class="container">
             <a class="navbar-brand" href="{%url 'home'%}">PixyDelta</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -37,7 +37,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'pixy' %}"><i class="bi bi-bell"></i></a>
+                        <a class="nav-link" data-bs-theme-value="dark"><i class="bi bi-bell"></i></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -67,7 +67,7 @@
             </div>
         </div>
     </nav>
-    <main style="padding-top: 62px;padding-bottom: 5px;">
+    <main style="padding-top: 67px;padding-bottom: 10px;">
         <div class="container">
             {% if messages %}
             {% for message in messages %}

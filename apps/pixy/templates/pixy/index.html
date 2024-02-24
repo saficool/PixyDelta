@@ -1,12 +1,31 @@
 {%extends 'base.html'%}
 {%load static %}
 {%block content%}
-<section class="feature">
-    <div class="feature-content">
-        <h1>Todo</h1>
-        <p>inside Pixy</p>
-        <a class="btn btn-primary cta" href="{% url 'register' %}">Get Started</a>
+<div class="card" style="height: calc(100vh - 77px);">
+    <div class="card-header p-2">Header</div>
+    <div class="card-body p-2">
+        {% if chats %}
+        {% for chat in chats %}
+        <div class="row g-2">
+            {% if chat.user_type == 'human' %}
+            <div class="col-2"></div>
+            <div class="col-10 bg-secondary">Human message here</div>
+            {% else %}
+            <div class="col-10 bg-primary">AI reply here</div>
+            <div class="col-2"></div>
+            {%endif%}
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No chats available</p>
+        {% endif %}
     </div>
-    <img src="{%static 'images/feature.jpg'%}" alt="" class="feature-image">
-</section>
+    <div class="card-footer p-2 d-flex">
+        <div class="input-group">
+            <input type="text" class="form-control shadow-none" placeholder="Ask here something"
+                aria-label="Message box" aria-describedby="message-box">
+            <span class="input-group-text" type="button" id="message-box"><i class="bi bi-send"></i></span>
+        </div>
+    </div>
+</div>
 {%endblock content%}
